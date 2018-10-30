@@ -1,0 +1,29 @@
+-------------
+format :
+-------------
+
+cible: dépendances
+	ligne de compilation
+
+
+-------------
+syntaxe, raccourcis
+-------------
+
+$@ : cible
+$^ : dépendances
+$< : première dépendance
+
+
+-------------
+exemple: 
+--------------
+
+hello: hello.o afficher.o
+	g++ -o $@ $^
+
+hello.o: hello.c hello.h
+	g++ -Wall -c $<
+
+afficher.o: afficher.c afficher.h
+	g++ -Wall -c $<
