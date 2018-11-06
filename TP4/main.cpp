@@ -1,35 +1,25 @@
 #include <iostream>
 #include <cstdlib>
-#include "ImageRGBu8.hpp"
+#include "Rectangle.hpp"
+#include "Square.hpp"
 
 /*
-truc cool :
-//convertir des images en autres formats
-convert monimage.jpg, monimage.ppm
-//lire les ppm
-feh *ppm
+
+compiler:
+g++ -Wall -std=c++11 -O2 main.cpp ./Rectangle.cpp -o rec.exe
 
 */
 
 int main () {
 
-	ImageRGBu8 img(50,50);
+	Rectangle r1(2.6, 4.42), r2;
+	std::cout << r1.surface() << std::endl;
+	r1.setWidth(3.9);
+	
+	Square c1(r1.getHeight());
+	c1.setSide(3);
 
-	/*
-	ImageRGBu8 vec2(vec);
+	std::cout << "surface " << c1.surface() << std::endl;
 
-	vec.normalize();
-
-	ImageRGBu8 vec3(3);
-	vec3 = vec;
-	vec3 = vec + vec2;
-
-	std::cout << "vec size : " << vec.size() << std::endl;
-	std::cout << "vec : " << vec.getValue(0) <<" "<< vec.getValue(1) <<" "<< vec.getValue(2) << std::endl;
-	std::cout << "vec2 : " << vec2.getValue(0) <<" "<< vec2.getValue(1) <<" "<< vec2.getValue(2) << std::endl;
-	std::cout << "vec3 : " << vec3.getValue(0) <<" "<< vec3.getValue(1) <<" "<< vec3.getValue(2) << std::endl;
-
-	vec3.save("vec3.txt");
-	*/
 	return 0;
-}
+};

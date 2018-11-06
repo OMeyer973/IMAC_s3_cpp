@@ -7,9 +7,11 @@
 
 
 class Rectangle {
+
 	protected:
 		double _width;
 		double _height;
+	
 	public:
 		//\brief constructors
 		Rectangle();
@@ -24,9 +26,9 @@ class Rectangle {
 
 		inline double getHeight() const { return _height; };
 
-		inline void setWidth(double w) { _width = w; };
+		inline void setWidth(const double& w) { _width = w; };
 
-		inline void setHeight(double h) { _height = h; };
+		inline void setHeight(const double& h) { _height = h; };
 
 		inline double surface() const { return _width * _height; };
 };

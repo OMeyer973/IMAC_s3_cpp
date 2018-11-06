@@ -1,0 +1,5 @@
+Figure
+	| Rectangle
+		| Square
+	| Elipse
+		| Cercle

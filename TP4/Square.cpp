@@ -3,16 +3,18 @@
 #include <iostream>
 #include <cstdlib>
 
+
+
 //constructors
 //default
-Square::Square(const double& width, const double& height)
-: _width(width), _height(height)
+Square::Square(const double& side)
+:Rectangle(side,side)
 {
 	std::cout << "constructeur par défaut (dimensions)" << std::endl;
 };
 
 Square::Square()
-: _width(0), _height(0)
+:Rectangle(0,0)
 {
 	std::cout << "constructeur par défaut" << std::endl;
 };
@@ -21,9 +23,9 @@ Square::Square()
 //constructeur par copie facultatif. 
 //par défaut le compilateur créé un constructeur par copie
 //en appelant les constructeurs par copie de tous les membres
-// (exactement ce qu'on a codé ici)
-Square::Square(const Square& r)
-: _width(r._width), _height(r._height)
+// (donc exactement ce qu'on a codé ici)
+Square::Square(const Square& s)
+:Rectangle(s._width, s._height)
 {
 	std::cout << "constructeur par copie" << std::endl;
 };
