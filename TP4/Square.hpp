@@ -1,18 +1,18 @@
-#ifndef CIRCLE_HPP__
-#define CIRCLE_HPP__
+#ifndef SQUARE_HPP__
+#define SQUARE_HPP__
 
-#include "Ellipsis.hpp"
+#include "Rectangle.hpp"
 
-class Circle : public Ellipsis {
+class Square : public Rectangle {
 	
 	public:
 		//\brief constructors
-		Circle();
-		Circle(const double& side);
-		Circle(const Circle& s);
+		Square();
+		Square(const double& side);
+		Square(const Square& s);
 
 		///\brief destructor
-		~Circle();
+		~Square();
 
 		//\brief methods
 		inline double getSide() const { return _width; };
@@ -22,14 +22,13 @@ class Circle : public Ellipsis {
 			_width = s;
 		};
 
-		inline void setWidth(const double& w) { 
-			setSide(w); 
-		};
+		inline void setWidth(const double& w) { setSide(w); };
 
-		inline void setHeight(const double& h) { 
-			setSide(h); 
-		};
+		inline void setHeight(const double& h) { setSide(h); };
 
+		inline void whoAmI() const { 
+			std::cout << "I'm a square" << std::endl;
+ 		};
 };
 
 

@@ -1,12 +1,9 @@
 #ifndef RECTANGLE_HPP__
 #define RECTANGLE_HPP__
 
-#include <cstdlib>
-#include <string>
-#include <vector>
+#include "Figure.hpp"
 
-
-class Rectangle {
+class Rectangle : public Figure {
 
 	protected:
 		double _width;
@@ -31,6 +28,10 @@ class Rectangle {
 		inline void setHeight(const double& h) { _height = h; };
 
 		inline double surface() const { return _width * _height; };
+
+		inline void whoAmI() const { 
+			std::cout << "I'm a rectangle" << std::endl;
+ 		};
 };
 
 
