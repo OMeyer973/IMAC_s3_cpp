@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <algorithm>
 #include "Square.hpp"
 #include "Circle.hpp"
 
@@ -54,6 +55,22 @@ int main () {
 	afficher(r);
 	Ellipsis *e = new Ellipsis(11,1);
 	afficher(e);
+
+	//exo10
+	std::vector<Figure*> listFig;
+
+	listFig.push_back(new Rectangle(1,2));
+	listFig.push_back(new Ellipsis(2,1));
+	listFig.push_back(new Square(1));
+	listFig.push_back(new Circle(2));
+
+	std::for_each(listFig.begin(), listFig.end(),
+        [](Figure * figure)
+        {
+
+			std::cout << "surface " << figure->surface() << std::endl;   
+        }
+	);
 
 	return 0;
 };
