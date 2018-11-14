@@ -5,24 +5,30 @@
 #include <algorithm>
 #include <deque>
 #include <list>
+#include <map>
+#include "Majuscule.hpp"
+#include "AjouteSiPair.hpp"
+
+
+// cool template function to print the content of a container
+template<class T>
+void printContainer(T container) {
+	std::cout << "container size : " << container.size() << std::endl;
+	typedef typename T::const_iterator containerIterator;
+	for (containerIterator i=container.begin(); i!=container.end(); i++) {
+		std::cout << *i <<' ';
+	}
+	std::cout << std::endl;
+}
 
 ////////////////////////
 //exo1
-
-//prints the size and content of a vector of int
-void printVectori(std::vector<int>& vec) {
-	std::cout << "vec size : " << vec.size() << std::endl;
-
-	for (std::vector<int>::const_iterator i = vec.begin(); i != vec.end(); ++i)
-		std::cout << *i <<' ';
-	std::cout << std::endl;
-}
 
 namespace exo1 {
 
 	int main(int argc, char const *argv[]) {
 		
-		std::cout << "ex 1" << std::endl;
+		std::cout << "----------------" << std::endl << "ex 1" << std::endl;
 		std::vector<int> vec;
 
 		//display
@@ -32,7 +38,7 @@ namespace exo1 {
 			std::cout << "not empty" << std::endl;
 		}
 
-		std::cout <	< "vec size : " << vec.size() << std::endl;
+		std::cout << "vec size : " << vec.size() << std::endl;
 
 		std::cout << "max size : " << vec.max_size() << std::endl;
 		
@@ -43,8 +49,8 @@ namespace exo1 {
 		vec.push_back(4);
 
 		//display
-		printVectori(vec);
-
+		printContainer(vec);
+		
 		return 0;
 	}
 }
@@ -54,7 +60,7 @@ namespace exo1 {
 namespace exo2 {
 
 	int main(int argc, char const *argv[]) {
-		std::cout << std::endl << "ex 2" << std::endl;
+		std::cout << std::endl << "----------------" << std::endl << "ex 2" << std::endl;
 
 		//fill
 		std::vector<std::string> v1;
@@ -82,19 +88,19 @@ namespace exo2 {
 namespace exo3 {
 
 	int main(int argc, char const *argv[]) {
-		std::cout << std::endl << "ex 3" << std::endl;
+		std::cout << std::endl << "----------------" << std::endl << "ex 3" << std::endl;
 
 		//fill
 		std::vector<int> v(20);
 		for (size_t i=0; i<v.size(); i++) {
 			v[i] = std::rand() % 21;
 		}
-		printVectori(v);
+		printContainer(v);
 		
 		//sort
 		std::sort(v.begin(), v.end());
 		
-		printVectori(v);
+		printContainer(v);
 
 		//count of iterations
 		std::cout << "number of sevens : " 
@@ -106,19 +112,10 @@ namespace exo3 {
 ////////////////////////
 //exo4
 
-//prints the size and content of a deque of int
-void printDequei(std::deque<int>& vec) {
-	std::cout << "deque size : " << vec.size() << std::endl;
-
-	for (std::deque<int>::const_iterator i = vec.begin(); i != vec.end(); ++i)
-		std::cout << *i <<' ';
-	std::cout << std::endl;
-}
-
 namespace exo4 {
 
 	int main(int argc, char const *argv[]) {
-		std::cout << std::endl << "ex 4" << std::endl;
+		std::cout << std::endl << "----------------" << std::endl << "ex 4" << std::endl;
 
 		//fill
 		std::deque<int> d(5);
@@ -127,12 +124,11 @@ namespace exo4 {
 		}
 
 		//push & pop
-		printDequei(d);
+		printContainer(d);
 		for (size_t i=0; i<5; i++) {
 			d.push_front(std::rand() % 21);
-			//printDequei(d);
 			d.pop_back();
-			printDequei(d);
+			printContainer(d);
 		}
 		return 0;
 	}
@@ -141,19 +137,10 @@ namespace exo4 {
 ////////////////////////
 //exo5
 
-//prints the size and content of a list of std::string
-void printListStr(std::list<std::string>& list) {
-	std::cout << "list size : " << list.size() << std::endl;
-
-	for (std::list<std::string>::const_iterator i = list.begin(); i != list.end(); ++i)
-		std::cout << *i <<' ';
-	std::cout << std::endl;
-}
-
 namespace exo5 {
 
 	int main(int argc, char const *argv[]) {
-		std::cout << std::endl << "ex 5" << std::endl;
+		std::cout << std::endl << "----------------" << std::endl << "ex 5" << std::endl;
 
 		//fill
 		std::list<std::string> l_philo;
@@ -161,34 +148,131 @@ namespace exo5 {
 		l_philo.push_front("Aristote");
 		l_philo.push_front("Descartes");
 		l_philo.push_front("Kant");
-		printListStr(l_philo);
+		printContainer(l_philo);
 
 		std::list<std::string> l_math;
 		l_math.push_front("Gauss");
 		l_math.push_front("Laplace");
 		l_math.push_front("Poincaré");
 		l_math.push_front("Descartes");
-		printListStr(l_math);
+		printContainer(l_math);
 
 		//sort
 		l_philo.sort();
-		printListStr(l_philo);
+		printContainer(l_philo);
 		l_math.sort();
-		printListStr(l_math);
+		printContainer(l_math);
 
 		//merge
 		std::list<std::string> l_intello;
 		l_intello.merge(l_philo);
 		l_intello.merge(l_math);
-		printListStr(l_intello);
+		printContainer(l_intello);
 
 		//unique
 		l_intello.unique();
-		printListStr(l_intello);
+		printContainer(l_intello);
 
 		//reverse
 		l_intello.reverse();
-		printListStr(l_intello);
+		printContainer(l_intello);
+
+		return 0;
+	}
+}
+
+////////////////////////
+//exo6
+
+typedef std::map<std::string, int>::const_iterator MapIterator;
+
+//prints the size and content of a map of str to int
+void printMapStri(const std::map<std::string, int>& map) {
+	std::cout << "map size : " << map.size() << std::endl;
+
+	for (MapIterator i = map.begin(); i != map.end(); ++i)
+		std::cout << i->first << ", " << i->second << " | ";
+	std::cout << std::endl;
+}
+
+namespace exo6 {
+
+	//looks for marie in the ages map
+	void lookForMarie (std::map<std::string, int> ages) {
+	 	if (ages.find("marie") == ages.end()) {
+			std::cout << "can't find marie :'(" << std::endl;
+	 	} else {
+			std::cout << "marie is " << (ages.find("marie"))->second << std::endl;
+	 	}
+	}
+
+	int main(int argc, char const *argv[]) {
+		std::cout << std::endl << "----------------" << std::endl << "ex 6" << std::endl;
+
+		//fill
+		std::map<std::string, int> ages;
+	 	ages.insert(std::pair <std::string, int> ("bob", 22)); 
+	 	ages.insert(std::pair <std::string, int> ("pol", 12)); 
+	 	ages.insert(std::pair <std::string, int> ("max", 58)); 
+		
+	 	printMapStri(ages);
+
+		lookForMarie(ages);
+	 	
+	 	ages.insert(std::pair <std::string, int> ("marie", 19)); 
+	 	std::cout << "marie added" << std::endl;
+
+		lookForMarie(ages);
+
+		return 0;
+	}
+}
+
+////////////////////////
+//exo7
+
+namespace exo7 {
+
+	int main(int argc, char const *argv[]) {
+		std::cout << std::endl << "----------------" << std::endl << "ex 7" << std::endl;
+
+		Majuscule M;
+		std::string text("l'ImAc C'eSt TrOp BiEn");
+		std::cout << text << std::endl;
+
+		for (size_t i=0; i<text.size(); i++) {
+			M(text[i]);
+		}
+		std::cout << text << std::endl;
+
+		return 0;
+	}
+}
+
+////////////////////////
+//exo8
+
+namespace exo8 {
+
+	int main(int argc, char const *argv[]) {
+		std::cout << std::endl << "----------------" << std::endl << "ex 8" << std::endl;
+
+		AjouteSiPair A;
+		std::list<int> l_ints;
+
+		for (size_t i=0; i<20; i++) {
+			l_ints.push_front(std::rand() % 20);
+		}
+
+		printContainer(l_ints);
+		std::cout << "added 10 to even numbers" << std::endl;
+
+		typedef std::list<int>::iterator ListiIterator;
+		for (ListiIterator i=l_ints.begin(); i!=l_ints.end(); i++) {
+			A(*i);
+		}
+
+		printContainer(l_ints);
 
 		return 0;
 	}
@@ -196,11 +280,14 @@ namespace exo5 {
 
 int main(int argc, char const *argv[]) {
 
-	// exo1::main(argc, argv);
-	// exo2::main(argc, argv);
-	// exo3::main(argc, argv);
-	// exo4::main(argc, argv);
+	exo1::main(argc, argv);
+	exo2::main(argc, argv);
+	exo3::main(argc, argv);
+	exo4::main(argc, argv);
 	exo5::main(argc, argv);
+	exo6::main(argc, argv);
+	exo7::main(argc, argv);
+	exo8::main(argc, argv);
 
 	return 0;
 }

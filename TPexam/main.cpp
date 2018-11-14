@@ -7,7 +7,7 @@
 
 
 //displays all the vehicules in the garage
-void showGarage (std::vector<Vehicule*> garage) {
+void showGarage (const std::vector<Vehicule*>& garage) {
 	std::cout << std::endl << "voici mon garage :" << std::endl;
 	for (size_t i=0; i<garage.size(); i++) {
 		garage[i]->afficher_infos();
