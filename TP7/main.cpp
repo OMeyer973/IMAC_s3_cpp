@@ -32,7 +32,7 @@ namespace exo1 {
 			std::cout << "not empty" << std::endl;
 		}
 
-		std::cout << "vec size : " << vec.size() << std::endl;
+		std::cout <	< "vec size : " << vec.size() << std::endl;
 
 		std::cout << "max size : " << vec.max_size() << std::endl;
 		
@@ -196,10 +196,10 @@ namespace exo5 {
 
 int main(int argc, char const *argv[]) {
 
-	exo1::main(argc, argv);
-	exo2::main(argc, argv);
-	exo3::main(argc, argv);
-	exo4::main(argc, argv);
+	// exo1::main(argc, argv);
+	// exo2::main(argc, argv);
+	// exo3::main(argc, argv);
+	// exo4::main(argc, argv);
 	exo5::main(argc, argv);
 
 	return 0;
