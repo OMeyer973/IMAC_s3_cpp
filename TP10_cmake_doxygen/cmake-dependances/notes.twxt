@@ -1,0 +1,22 @@
+/
+cmakelist.txt
+
+	mylib/
+		CMakelist.txt
+		src
+		build
+		doc/CMakelist
+
+	myProg/
+		CMakelist.txt
+		src
+		build
+build/
+
+# cmake permet de faire du code portable. 
+# On peut exporter la lib du projet pour
+# la réutiliser ailleur. toutes les options
+# de compil de la lib sont dans 
+# mylib/Cmakelist.txt
+# et il suffit de copier le dossier de la
+# lib pour la réutiliser

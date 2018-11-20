@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/olivier/Documents/IMAC_s3_cpp/TP10_cmake_doxygen/valgrind-debugger/src/main.cpp
+iostream
+-
+cstdlib
+-
+string
+-
+

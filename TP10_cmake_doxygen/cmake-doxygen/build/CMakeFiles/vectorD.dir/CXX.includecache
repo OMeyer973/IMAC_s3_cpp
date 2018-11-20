@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/olivier/Documents/IMAC_s3_cpp/TP10_cmake_doxygen/cmake-doxygen/src/VectorD.cpp
+VectorD.hpp
+/home/olivier/Documents/IMAC_s3_cpp/TP10_cmake_doxygen/cmake-doxygen/src/VectorD.hpp
+fstream
+-
+cstdlib
+-
+algorithm
+-
+
+/home/olivier/Documents/IMAC_s3_cpp/TP10_cmake_doxygen/cmake-doxygen/src/VectorD.hpp
+iostream
+-
+string
+-
+cmath
+-
+cstdlib
+-
+fstream
+-
+
+/home/olivier/Documents/IMAC_s3_cpp/TP10_cmake_doxygen/cmake-doxygen/src/main.cpp
+iostream
+-
+cstdlib
+-
+VectorD.hpp
+/home/olivier/Documents/IMAC_s3_cpp/TP10_cmake_doxygen/cmake-doxygen/src/VectorD.hpp
+

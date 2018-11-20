@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/olivier/Documents/IMAC_s3_cpp/TP10_cmake_doxygen/kcachegrind/src/main.cpp
+iostream
+-
+vector
+-
+string
+-
+cstdlib
+-
+
