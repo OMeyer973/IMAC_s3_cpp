@@ -1,6 +1,3 @@
-#include <cstdlib>
-#include <exception>
-#include <string>
 #include <iostream>
 
 #ifndef __POINT3D_HPP__
@@ -9,46 +6,46 @@
 namespace CPPIMAC2 {
 
 
-template<typename Type>
+template<typename T>
 class Point3D {
 
 public:
 	///\brief default constructor
-	inline Point3D()
+	Point3D()
 	:_x(0), _y(0), _z(0)
 	{};
 	
 	///\brief default constructor
-	Point3D(const Type& x, const Type& y, const Type& z)
+	Point3D(const T& x, const T& y, const T& z)
 	:_x(x), _y(y), _z(z)
 	{};
 	
 	///\brief copy constructor
-	Point3D(const Point3D<Type>& p)
+	Point3D(const Point3D<T>& p)
 	:_x(p._x), _y(p._y), _z(p._z)
 	{};
 
-	///\brief copy constructor w template
+	///\brief copy constructor from vector of other type 
 	template<typename U>
-	Point3D(const Point3D<U>& p) const
+	Point3D(const Point3D<U>& p)
 	:_x(p.getX()), _y(p.getY()), _z(p.getZ())
 	{};
 
 	///\brief destructor
-	inline ~Point3D(){};
+	~Point3D(){};
 
 	///\brief getters
-	inline Type getX() const { return _x; };
-	inline Type getY() const { return _y; };
-	inline Type getZ() const { return _z; };
+	T getX() const { return _x; };
+	T getY() const { return _y; };
+	T getZ() const { return _z; };
 
 	///\brief add a vec and a scalar
-	inline Point3D operator+ (const Type& t) const {
+	Point3D operator+ (const T& t) const {
 		return Point3D(_x+t, _y+t, _z+t);
 	};
 	
 	///\brief add 2 vec
-	inline Point3D operator+ (const Point3D<Type>& p) const {
+	Point3D operator+ (const Point3D<T>& p) const {
 		return Point3D(_x+p._x, _y+p._y, _z+p._y);
 	};
 
@@ -59,9 +56,9 @@ public:
 
 
 protected:
-	Type _x;
-	Type _y;
-	Type _z;
+	T _x;
+	T _y;
+	T _z;
 
 };
 
