@@ -6,6 +6,7 @@
 #include <deque>
 #include <list>
 #include <map>
+#include <functional>
 #include "Majuscule.hpp"
 #include "AjouteSiPair.hpp"
 
@@ -229,9 +230,9 @@ namespace exo6 {
 }
 
 ////////////////////////
-//exo7
+//exo7 foncteur
 
-namespace exo7 {
+namespace exo7foncteur {
 
 	int main(int argc, char const *argv[]) {
 		std::cout << std::endl << "----------------" << std::endl << "ex 7" << std::endl;
@@ -249,10 +250,38 @@ namespace exo7 {
 	}
 }
 
-////////////////////////
-//exo8
 
-namespace exo8 {
+////////////////////////
+//exo7
+
+namespace exo7lambda {
+
+	int main(int argc, char const *argv[]) {
+		std::cout << std::endl << "----------------" << std::endl << "ex 7" << std::endl;
+
+		std::string text("l'ImAc C'eSt TrOp BiEn");
+		std::cout << text << std::endl;
+
+		//déclaration de la lambda fonction
+		std::function<void(char& a)> setUpper;
+
+		//définition de la lambda fonction
+		setUpper = [](char& a) -> void {
+				a = std::toupper(a);
+			};
+
+		std::for_each(text.begin(), text.end(), setUpper);
+
+		std::cout << text << std::endl;
+
+		return 0;
+	}
+}
+
+////////////////////////
+//exo8 avec des foncteurs
+
+namespace exo8foncteur {
 
 	int main(int argc, char const *argv[]) {
 		std::cout << std::endl << "----------------" << std::endl << "ex 8" << std::endl;
@@ -278,6 +307,41 @@ namespace exo8 {
 	}
 }
 
+
+////////////////////////
+//exo8 avec des lambda-fonctions
+
+namespace exo8lambda {
+
+	int main(int argc, char const *argv[]) {
+		std::cout << std::endl << "----------------" << std::endl << "ex 8" << std::endl;
+
+		std::list<int> l_ints;
+
+		for (size_t i=0; i<20; i++) {
+			l_ints.push_front(std::rand() % 20);
+		}
+
+		printContainer(l_ints);
+		std::cout << "added 10 to even numbers" << std::endl;
+
+		//déclaration de la lambda fonction
+		std::function<void(int& a)> ajouteSiPair;
+
+		//définition de la lambda fonction
+		ajouteSiPair = [](int& a) -> void {
+				if (a%2 == 0)
+					a += 10;
+			};
+
+		std::for_each(l_ints.begin(), l_ints.end(), ajouteSiPair);
+
+		printContainer(l_ints);
+
+		return 0;
+	}
+}
+
 int main(int argc, char const *argv[]) {
 
 	exo1::main(argc, argv);
@@ -286,8 +350,10 @@ int main(int argc, char const *argv[]) {
 	exo4::main(argc, argv);
 	exo5::main(argc, argv);
 	exo6::main(argc, argv);
-	exo7::main(argc, argv);
-	exo8::main(argc, argv);
+	exo7foncteur::main(argc, argv);
+	exo7lambda::main(argc, argv);
+	exo8foncteur::main(argc, argv);
+	exo8lambda::main(argc, argv);
 
 	return 0;
 }

@@ -10,16 +10,17 @@ int main(int argc, char const *argv[]) {
 	//exception à l'exécution
 	try {
 		if (b==0) {
-			Error error(1, 856, "dénominateur nul !");
-			throw error;
+			Error error(1, 856, "dénominateur nul !", __FILE__, __LINE__);
+			throw (error);
 		}
 		std::cout << "a/b = " << a/b << std::endl;
 	}
 	catch(Error error) {
-		std::cerr << "exception lancée : " << std::endl;
-		std::cerr << "	Niveau : " << error.getLevel() << std::endl;
-		std::cerr << "	Code : " << error.getCode() << std::endl;
-		std::cerr << "	Message : " << error.what() << std::endl;
+		// std::cerr << "exception lancée : " << std::endl;
+		// std::cerr << "	Niveau : " << error.getLevel() << std::endl;
+		// std::cerr << "	Code : " << error.getCode() << std::endl;
+		
+		error.what();
 	}
 	catch(...) {
 		std::cerr << "Exception inconnue dans votre programme !" << std::endl;
