@@ -21,13 +21,13 @@ int main(int argc, char const *argv[]) {
 
 	std::cout << tab << std::endl;
 	
-	std::cout << "tab.getFirst() : " << tab.getFirst() << std::endl;
+	std::cout << "tab.first() : " << tab.first() << std::endl;
 	std::cout << "tab[3] : " << tab[3] << std::endl;
 	tab[3] = 1000;
 	std::cout << "tab.at(3) : " << tab.at(3) << std::endl;
 	tab.at(3) = 999;
 	
-	std::cout << "tab.getLast() : " << tab.getLast() << std::endl;
+	std::cout << "tab.last() : " << tab.last() << std::endl;
 	std::cout << "tab.size() : " << tab.size() << std::endl;
 
 	tab.pop();

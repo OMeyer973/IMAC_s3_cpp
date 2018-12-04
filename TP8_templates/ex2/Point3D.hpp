@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Error.hpp"
 
 #ifndef __POINT3D_HPP__
 #define __POINT3D_HPP__
@@ -28,16 +29,43 @@ public:
 	///\brief copy constructor from vector of other type 
 	template<typename U>
 	Point3D(const Point3D<U>& p)
-	:_x(p.getX()), _y(p.getY()), _z(p.getZ())
+	:_x(p.x()), _y(p.y()), _z(p.z())
 	{};
 
 	///\brief destructor
 	~Point3D(){};
 
-	///\brief getters
-	T getX() const { return _x; };
-	T getY() const { return _y; };
-	T getZ() const { return _z; };
+	///\brief const getters
+	const T& x() const { return _x; };
+	const T& y() const { return _y; };
+	const T& z() const { return _z; };
+
+	const T& operator[] (const size_t i) const { 
+		switch (i) {
+			case 0 : return _x;
+			case 1 : return _y;
+			case 2 : return _z;
+			default: break;
+		}
+		throw Error("Point 3D index out of range [0,2]", __FILE__, __LINE__);
+	}
+
+	///\brief non-const getters
+	T& x() { return _x; };
+	T& y() { return _y; };
+	T& z() { return _z; };
+
+	T& operator[] (const size_t i) { 
+		switch (i) {
+			case 0 : return _x;
+			case 1 : return _y;
+			case 2 : return _z;
+			default: break;
+		}
+		throw Error("Point 3D index out of range [0,2]", __FILE__, __LINE__);
+	}
+
+
 
 	///\brief add a vec and a scalar
 	Point3D operator+ (const T& t) const {
@@ -51,7 +79,7 @@ public:
 
 	///\brief display with cout << ... <<
 	friend std::ostream &operator<<(std::ostream &os, const Point3D &p) {
-		return os << "[" << p.getX() << ", " << p.getY() << ", " << p.getZ() << "]";
+		return os << "[" << p._x << ", " << p._y << ", " << p._z << "]";
 	}
 
 

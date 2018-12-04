@@ -1,6 +1,9 @@
 #include <iostream>
 #include "Point3D.hpp"
 
+
+//g++ main.cpp -Wall -std=c++11 -o main &&./main
+
 namespace CPPIMAC2 {
 
 
@@ -17,9 +20,11 @@ int main(int argc, char const *argv[]) {
 	std::cout << p4 <<std::endl;
 
 	Point3D<int> p5 = p2 + p4;
-	std::cout << p5 <<std::endl;
+	std::cout << p5 << std::endl;
 	
 	Point3D<float> p6(p5);
+	
+	std::cout << p6[0] << p6[1] << p6[2] << p6[3] << std::endl;
 	return 0;
 }
 

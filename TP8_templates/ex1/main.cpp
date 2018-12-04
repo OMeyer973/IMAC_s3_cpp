@@ -36,5 +36,5 @@ int main(int argc, char const *argv[]) {
 };
 
 int main(int argc, char const *argv[]) {
-	return TP8::main(argc, argv);
+	return CPPIMAC2::main(argc, argv);
 }

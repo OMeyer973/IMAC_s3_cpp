@@ -25,9 +25,13 @@ namespace CPPIMAC2 {
 		///\brief returns the max capacity of the tab
 		size_t sizeMax() const { return N; };
 		///\brief returns a reference to the first element of the tab
-		T& getFirst();
+		T& first();
+		//TODO
+		// const T& first() const;
 		///\brief returns a reference to the last element of the tab
-		T& getLast();
+		T& last();
+		// TODO
+		// const T& last() const;
 		///\brief returns a reference to the element of id "ind" in the tab (no exception check)
 		T& operator[](size_t ind) { return _data[ind]; };
 		///\brief returns a reference to the element of id "ind" in the tab
@@ -62,7 +66,7 @@ namespace CPPIMAC2 {
 	// functions implementation
 
 	template<typename T, size_t N>
-	T& 	Tableau<T, N>::getFirst()  {
+	T& 	Tableau<T, N>::first()  {
 		try {
 			if (isEmpty()) {
 				Error error("trying to get first element of empty tab", __FILE__, __LINE__);
@@ -73,13 +77,14 @@ namespace CPPIMAC2 {
 			//////////// end actual function code
 	
 		}
+		// catch should go into the main code
 		catch(Error error) {
 			error.what();
 		}
 	};
 
 	template<typename T, size_t N>
-	T& Tableau<T, N>::getLast() {
+	T& Tableau<T, N>::last() {
 		try {
 			if (isEmpty()) {
 				Error error("trying to get last element of empty tab", __FILE__, __LINE__);

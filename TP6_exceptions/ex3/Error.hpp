@@ -6,6 +6,7 @@
 #ifndef __ERROR_HPP__
 #define __ERROR_HPP__
 
+//more simple exception class available in TP8
 class Error : public std::exception {
 
 public:
