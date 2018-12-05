@@ -29,9 +29,24 @@ int main(int argc, char const *argv[]) {
 	
 	std::cout << "tab.last() : " << tab.last() << std::endl;
 	std::cout << "tab.size() : " << tab.size() << std::endl;
-
-	tab.pop();
+	
+	try {		
+		tab.pop();
+		tab.pop();
+		tab.pop();
+		tab.pop();
+		tab.pop();
+		tab.pop();
+		tab.pop();
+	} catch (Error error) { error.what(); };
+	
 	std::cout << tab << std::endl;
+	
+	tab.push(4);
+	tab.push(3);
+	tab.push(6);
+	tab.push(1);
+	tab.push(5);
 
 	tab.insert(9,2);
 	std::cout << tab << std::endl;

@@ -47,7 +47,7 @@ public:
 			case 2 : return _z;
 			default: break;
 		}
-		throw Error("Point 3D index out of range [0,2]", __FILE__, __LINE__);
+		throw Error("Point 3D index out of range [0,2] (" + std::to_string(i) + ")", __FILE__, __LINE__);
 	}
 
 	///\brief non-const getters
@@ -62,7 +62,7 @@ public:
 			case 2 : return _z;
 			default: break;
 		}
-		throw Error("Point 3D index out of range [0,2]", __FILE__, __LINE__);
+		throw Error("Point 3D index out of range [0,2] (" + std::to_string(i) + ")", __FILE__, __LINE__);
 	}
 
 

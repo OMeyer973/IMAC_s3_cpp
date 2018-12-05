@@ -23,8 +23,14 @@ int main(int argc, char const *argv[]) {
 	std::cout << p5 << std::endl;
 	
 	Point3D<float> p6(p5);
-	
-	std::cout << p6[0] << p6[1] << p6[2] << p6[3] << std::endl;
+	try {
+		std::cout << p6[0] << std::endl 
+				  << p6[1] << std::endl 
+				  << p6[2] << std::endl
+				  << p6[3] << std::endl;
+	} catch(Error error) {
+		error.what();
+	}
 	return 0;
 }
 

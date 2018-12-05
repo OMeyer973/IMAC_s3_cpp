@@ -67,141 +67,88 @@ namespace CPPIMAC2 {
 
 	template<typename T, size_t N>
 	T& 	Tableau<T, N>::first()  {
-		try {
-			if (isEmpty()) {
-				Error error("trying to get first element of empty tab", __FILE__, __LINE__);
-				throw (error);
-			}
-			//////////// actual function code
-			return _data[0];
-			//////////// end actual function code
-	
+		if (isEmpty()) {
+			Error error("trying to get first element of empty tab", __FILE__, __LINE__);
+			throw (error);
 		}
-		// catch should go into the main code
-		catch(Error error) {
-			error.what();
-		}
+		return _data[0];
 	};
 
 	template<typename T, size_t N>
 	T& Tableau<T, N>::last() {
-		try {
-			if (isEmpty()) {
-				Error error("trying to get last element of empty tab", __FILE__, __LINE__);
-				throw (error);
-			}
-			//////////// actual function code
-			return _data[_size-1];
-			//////////// end actual function code
-	
+		if (isEmpty()) {
+			Error error("trying to get last element of empty tab"
+				, __FILE__, __LINE__);
+			throw (error);
 		}
-		catch(Error error) {
-			error.what();
-		}
+		return _data[_size-1];
 	};
 
 	template<typename T, size_t N>
 	T& Tableau<T, N>::at(size_t ind) {
-		try {
-			if (ind < 0 || ind > _size) {
-				Error error("trying to get element out of tab bounds", __FILE__, __LINE__);
-				throw (error);
-			}
-			//////////// actual function code
-			return _data[ind];
-			//////////// end actual function code
-	
+		if (ind < 0 || ind > _size) {
+			Error error("trying to get element out of tab bounds (id = " 
+				+ std::to_string(ind) + ", capacity = " + std::to_string(N) + ")", __FILE__, __LINE__);
+			throw (error);
 		}
-		catch(Error error) {
-			error.what();
-		}
+		return _data[ind];
 	};
 
 	template<typename T, size_t N>
 	void Tableau<T, N>::push(const T& toPush) {
-		try {
-			if (_size >= N) {
-				Error error("trying to push element in full tab", __FILE__, __LINE__);
-				throw (error);
-			}
-			//////////// actual function code
-			_size ++;
-			_data[_size-1] = toPush;
-			//////////// end actual function code
-	
+		if (_size >= N) {
+			Error error("trying to push element in full tab (capacity = " + std::to_string(N) + ")", __FILE__, __LINE__);
+			throw (error);
 		}
-		catch(Error error) {
-			error.what();
-		}
+		_size ++;
+		_data[_size-1] = toPush;
 	};
 
 	template<typename T, size_t N>
 	T& Tableau<T, N>::pop() {
-				try {
-			if (isEmpty()) {
-				Error error("trying to pop last element of empty tab", __FILE__, __LINE__);
-				throw (error);
-			}
-			//////////// actual function code
-			_size --;
-			return _data[_size];
-			//////////// end actual function code
-	
+		if (isEmpty()) {
+			Error error("trying to pop last element of empty tab", __FILE__, __LINE__);
+			throw (error);
 		}
-		catch(Error error) {
-			error.what();
-		}
+		_size --;
+		return _data[_size];
 	};
 
 	template<typename T, size_t N>
 	void Tableau<T, N>::insert(const T& toInsert, size_t ind) {
-		try {
-			if (_size >= N) {
-				Error error("trying to insert element in full tab", __FILE__, __LINE__);
-				throw (error);
-			}
-			if (ind < 0 || ind > _size) {
-				Error error("trying to insert element out of tab bounds", __FILE__, __LINE__);
-				throw (error);
-			}
-			//////////// actual function code
-			for (size_t i=_size; i>ind; i--) {
-				_data[i] = _data[i-1];
-			}
-			_data[ind] = toInsert;
-			_size ++;
-			//////////// end actual function code
-	
+		if (_size >= N) {
+			Error error("trying to insert element in full tab (size = " + std::to_string(N) + ")", __FILE__, __LINE__);
+			throw (error);
 		}
-		catch(Error error) {
-			error.what();
+		if (ind < 0 || ind > _size) {
+			Error error("trying to insert element out of tab bounds (id = " 
+				+ std::to_string(ind) + ", size = " + std::to_string(_size) + ")", __FILE__, __LINE__);
+			throw (error);
 		}
+
+		for (size_t i=_size; i>ind; i--) {
+			_data[i] = _data[i-1];
+		}
+		_data[ind] = toInsert;
+		_size ++;
 	};
 
 	template<typename T, size_t N>
 	void Tableau<T, N>::erase(const size_t ind) {
-		try {
-			if (_size == 0) {
-				Error error("trying to erase element of empty tab", __FILE__, __LINE__);
-				throw (error);
-			}
-			if (ind < 0 || ind >= _size) {
-				Error error("trying to insert element out of tab bounds", __FILE__, __LINE__);
-				throw (error);
-			}
-			//////////// actual function code
-			for (size_t i=ind; i<_size-1; i++) {
-				_data[i] = _data[i+1];
-			}
-			_size --;
-			//////////// end actual function code
-	
+		if (_size == 0) {
+			Error error("trying to erase element of empty tab", __FILE__, __LINE__);
+			throw (error);
 		}
-		catch(Error error) {
-			error.what();
+		if (ind < 0 || ind >= _size) {
+			Error error("trying to insert element out of tab bounds (id = " 
+				+ std::to_string(ind) + ", size = " + std::to_string(_size) + ")", __FILE__, __LINE__);
+			throw (error);
 		}
+		for (size_t i=ind; i<_size-1; i++) {
+			_data[i] = _data[i+1];
+		}
+		_size --;
 	};
-
 
 
 
